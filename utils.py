@@ -196,9 +196,9 @@ def one_hot_encode(df, target, cols):
 
 
 def train_val_test_split(X, df, target, test_size=0.2, val_size=0.2, partitions=2):
-
+    
     if partitions == 2:
-        X_train, X_test, y_train, y_test = train_test_split(X, df[target], stratify = df[target], test_size=test_size, shuffle=True, random_state=42)
+        X_train, X_test, y_train, y_test = train_test_split(X, df[target], test_size=test_size, shuffle=True, random_state=42)
 
         print('X_train', X_train.shape, '\tX_test',  X_test.shape)
         print('y_train', y_train.shape, '\ty_test',  y_test.shape)
@@ -206,7 +206,7 @@ def train_val_test_split(X, df, target, test_size=0.2, val_size=0.2, partitions=
         return (X_train, y_train), (X_test, y_test)
     
     elif partitions == 3:
-        X_train, X_test, y_train, y_test = train_test_split(X, df[target], stratify = df[target], test_size=test_size, shuffle=True, random_state=42)
+        X_train, X_test, y_train, y_test = train_test_split(X, df[target], test_size=test_size, shuffle=True, random_state=42)
         X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=val_size, random_state=42)
 
         print('X_train', X_train.shape, '\tX_val', X_val.shape, '\tX_test',  X_test.shape)
